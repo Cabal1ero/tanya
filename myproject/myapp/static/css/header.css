@@ -1,0 +1,58 @@
+.header {
+    background-color: rgba(255, 255, 255, 0.8); /* Белый полупрозрачный фон */
+    backdrop-filter: blur(10px); /* Эффект размытия для современных браузеров */
+    -webkit-backdrop-filter: blur(10px);
+    padding: 15px 0; /* Немного уменьшим паддинг */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Тень мягче */
+    position: fixed; /* Фиксируем шапку */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1030;
+}
+
+.navbar {
+    background-color: transparent !important; /* Убираем фон у навбара */
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--light-text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--accent-color);
+}
+
+.custom-toggler.navbar-toggler {
+    border-color: var(--accent-color);
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(8, 126, 139)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.elegant-brand {
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.btn-booking {
+    background-color: var(--accent-color) !important; /* Усиление стиля */
+    border-color: var(--accent-color) !important; /* Усиление стиля */
+    color: #fff !important;
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-booking:hover, .btn-booking:focus {
+    background-color: #076a75 !important; /* Усиление стиля */
+    border-color: #076a75 !important; /* Усиление стиля */
+    color: #fff !important;
+    box-shadow: 0 4px 10px rgba(8, 126, 139, 0.3);
+}

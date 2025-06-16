@@ -1,0 +1,32 @@
+{% if hero_slides %}
+<section id="hero">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            {% for slide in hero_slides %}
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
+            {% endfor %}
+        </div>
+
+        <div class="carousel-inner">
+            {% for slide in hero_slides %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}" style="background-image: url('{{ slide.image.url }}');">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>{{ slide.title }}</h2>
+                    <p>{{ slide.subtitle }}</p>
+                    <p><a class="btn btn-lg btn-primary" href="{{ slide.button_link }}">{{ slide.button_text }}</a></p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
+{% endif %}

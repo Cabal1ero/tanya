@@ -1,0 +1,119 @@
+/* 
+  Новый дизайн карточек: Элегантный, чистый, с акцентом на контент.
+  Используем теплый кремовый фон, который гармонирует с персиковой темой.
+*/
+
+.card, .team-card, .service-card-new {
+    background-color: #fffaf5; /* Теплый кремовый фон */
+    border: 1px solid rgba(165, 105, 75, 0.2); /* Тонкая рамка в цвет акцента */
+    box-shadow: 0 5px 15px rgba(92, 64, 51, 0.05); /* Мягкая, едва заметная тень */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 0.75rem; /* Более выраженное скругление */
+    overflow: hidden; /* Чтобы картинка не вылезала за скругленные углы */
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover, .team-card:hover, .service-card-new:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(92, 64, 51, 0.1); /* Тень становится заметнее */
+}
+
+/* --- Карточки КОМАНДЫ --- */
+.team-card {
+    text-align: center; /* Центрируем весь контент */
+}
+
+.team-card .card-img-top {
+    width: 120px; /* Фиксированный размер аватара */
+    height: 120px;
+    border-radius: 50%; /* Круглый аватар */
+    object-fit: cover;
+    margin: 1.5rem auto 1rem; /* Отступы сверху, авто по бокам, отступ снизу */
+    border: 3px solid #fff;
+    box-shadow: 0 4px 8px rgba(92, 64, 51, 0.1);
+}
+
+.team-card .card-body {
+    padding: 0 1.5rem 1.5rem; /* Убираем верхний паддинг, он задан марджином фото */
+}
+
+.team-card .card-title {
+    font-size: 1.25rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.team-card .card-subtitle {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+.team-card .card-text {
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+}
+
+
+/* --- Карточки УСЛУГ --- */
+
+.service-card-new {
+    position: relative;
+    height: auto; /* Высота будет зависеть от контента */
+}
+
+.service-card-new .card-img {
+    width: 100%;
+    height: 250px; /* Фиксированная высота для единообразия */
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    border-radius: 0; /* Убираем скругление, т.к. карточка и так обрезает */
+}
+
+.service-card-new:hover .card-img {
+    transform: scale(1.05);
+}
+
+/* Убираем старый оверлей */
+.service-card-new .card-img-overlay {
+    display: none;
+}
+
+/* Новый блок для контента под картинкой */
+.service-card-new .card-body {
+    padding: 1.5rem;
+    text-align: center;
+    display: flex; /* Включаем flexbox */
+    flex-direction: column; /* Располагаем элементы в колонку */
+    flex-grow: 1; /* Позволяем этому блоку растягиваться */
+}
+
+.service-card-new .card-title-new {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    color: var(--text-color);
+}
+
+.service-card-new .card-body p {
+    flex-grow: 1; /* Основной текст занимает все доступное место */
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+}
+
+/* Ссылка-обертка */
+.service-card-link {
+    text-decoration: none;
+}
+
+/* Контейнер для кнопки "Подробнее" */
+.service-card-button-container::after {
+    content: '';
+    display: none; /* Убираем кнопку, т.к. вся карточка - ссылка */
+}
+
+.service-card-new:hover .service-card-button-container::after {
+    background-color: transparent;
+}

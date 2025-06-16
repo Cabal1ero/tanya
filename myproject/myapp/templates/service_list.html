@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Наши Услуги</h1>
+    <div class="row">
+        {% for service in services %}
+            <div class="col-md-4">
+                <a href="{% url 'service_detail' service.pk %}">
+                <div class="card mb-4">
+                    {% if service.get_first_image %}
+                        <img src="{{ service.get_first_image.image.url }}" class="card-img-top" alt="{{ service.name }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ service.name }}</h5>
+                        <p class="card-text">{{ service.description|truncatewords:20 }}</p>
+                    </div>
+                </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %} 

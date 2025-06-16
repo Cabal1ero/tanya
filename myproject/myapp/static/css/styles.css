@@ -1,0 +1,239 @@
+/* :root {
+--primary-color: #ffffff;
+--secondary-color: #f7f7f7;
+--accent-color: #233647;
+--text-color: #0a0a0a;
+--light-text-color: #2b2929;
+--background-color: #fcfcfc;
+
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.header {
+    background-color: var(--primary-color);
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+
+.navbar {
+    background-color: var(--primary-color);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--light-text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--accent-color);
+}
+
+.custom-toggler.navbar-toggler {
+    border-color: #000;
+}
+.custom-toggler-icon {
+    color: #000;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28000, 000, 000, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+  }
+
+.elegant-brand {
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.section:nth-child(odd) {
+    background-color: var(--primary-color);
+}
+
+.section:nth-child(even) {
+    background-color: var(--secondary-color);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--accent-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.hero-section {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 120px 0;
+}
+
+.btn-primary {
+    background-color: #639ace;
+    border-color: #639ace;
+    color: var(--text-color);
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #3a80d2;
+    border-color: #3a80d2;
+}
+
+.card {
+    background-color: var(--secondary-color);
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.card-body {
+    color: var(--text-color);
+}
+
+.card-title {
+    color: var(--accent-color);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.team-card img, .service-card img, .portfolio-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+}
+
+.footer {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 30px 0;
+    text-align: center;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+}
+
+.bg-light {
+    background-color: var(--secondary-color) !important;
+}
+
+.text-muted {
+    color: var(--light-text-color) !important;
+}
+
+.review-card, .service-card, .team-card, .portfolio-card {
+    background-color: var(--secondary-color);
+}
+.review-form-container {
+    background-color: var(--secondary-color);
+    padding: 30px;
+    border-radius: 8px;
+    margin-top: 40px;
+}
+
+.review-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.review-form label {
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.review-form input[type="text"],
+.review-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: var(--primary-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    color: var(--text-color);
+}
+
+.review-form .rating-input {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.review-form .rating-input input[type="radio"] {
+    margin-right: 5px;
+}
+
+.review-form button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    font-weight: 600;
+}
+
+.review-rating .star {
+    color: var(--accent-color);
+}
+
+.masters-schedule {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.master-card {
+    background-color: var(--primary-color);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.master-name {
+    color: var(--accent-color);
+}
+
+.master-position {
+    color: var(--light-text-color);
+}
+
+.time-slots {
+    background-color: var(--secondary-color);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.slot {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 5px 10px;
+    margin: 5px 0;
+    border-radius: 3px;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+} */

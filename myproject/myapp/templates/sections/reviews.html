@@ -1,0 +1,62 @@
+{% load static %}
+{% load app_tags %}
+<section id="reviews" class="section">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">Что говорят наши клиенты</h2>
+        
+        <div class="row">
+            {% for review in reviews %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="review-card-modern">
+                    <div class="review-header">
+                        <img src="{% static 'img/default_avatar.png' %}" alt="Avatar" class="review-avatar">
+                        <div>
+                            <h5 class="review-name">{{ review.name }}</h5>
+                            <div class="review-rating-stars">
+                                {% for i in "x"|ljust:review.rating %}
+                                <span class="star">&#9733;</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-body">
+                        <p class="review-text">«{{ review.text }}»</p>
+                    </div>
+                    <div class="review-footer">
+                        <span class="review-date">{{ review.date|date:"d E Y" }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-6">
+                <div class="review-form-container-modern">
+                    <h3 class="text-center">Оставить отзыв</h3>
+                    <form method="POST" action="{% url 'add_review' %}" class="review-form-modern">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="{{ review_form.name.id_for_label }}" class="form-label">{{ review_form.name.label }}</label>
+                            {{ review_form.name }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ review_form.text.id_for_label }}" class="form-label">{{ review_form.text.label }}</label>
+                            {{ review_form.text }}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">{{ review_form.rating.label }}</label>
+                            <div class="rating-input">
+                                {% for radio in review_form.rating|reverselist %}
+                                    {{ radio.tag }}
+                                    <label for="{{ radio.id_for_label }}">&#9733;</label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Отправить отзыв</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

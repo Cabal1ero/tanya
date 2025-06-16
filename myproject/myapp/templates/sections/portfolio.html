@@ -1,0 +1,28 @@
+{% load static %}
+<section id="portfolio" class="section">
+  <div class="container">
+    <h2 class="section-title">Примеры наших работ</h2>
+    <div class="row">
+      {% for work in portfolio_works %}
+      <div class="col-lg-4 col-md-6 mb-4 d-flex">
+        <div class="card service-card-new h-100">
+          {% if work.image %}
+            <img src="{{ work.image.url }}" class="card-img" alt="{{ work.title }}">
+          {% else %}
+            <img src="{% static 'img/default.svg' %}" class="card-img" alt="Default Image">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title-new">{{ work.title }}</h5>
+            <p>{{ work.description }}</p>
+            <div class="service-card-button-container"></div>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-12">
+        <p>В настоящее время примеры работ недоступны.</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

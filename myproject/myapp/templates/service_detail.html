@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>{{ service.name }}</h1>
+            <p class="lead">{{ service.description }}</p>
+            <hr>
+            <h4>Цена: {{ service.price }} руб.</h4>
+            
+            <!-- Здесь можно будет добавить более подробное описание, если оно есть в модели -->
+            
+            <a href="{% url 'home' %}#appointment" class="btn btn-primary mt-3">Записаться на эту услугу</a>
+        </div>
+        <div class="col-md-4">
+            <div id="serviceDetailCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for image in service.images.all %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ service.name }}">
+                    </div>
+                    {% empty %}
+                    <div class="carousel-item active">
+                        <img src="{% static 'img/default.svg' %}" class="d-block w-100" alt="Default Image">
+                    </div>
+                    {% endfor %}
+                </div>
+                {% if service.images.count > 1 %}
+                <button class="carousel-control-prev" type="button" data-bs-target="#serviceDetailCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#serviceDetailCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

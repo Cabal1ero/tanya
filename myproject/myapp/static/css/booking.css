@@ -1,0 +1,149 @@
+#offcanvasBooking {
+    width: 500px;
+}
+
+.date-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(8, 126, 139, 0.05);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.date-strip {
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.date-item {
+    cursor: pointer;
+    padding: 0.5rem;
+    text-align: center;
+    border: 2px solid transparent;
+    border-radius: 0.25rem;
+    min-width: 60px;
+    transition: background-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    min-height: 70px;
+}
+
+.date-item.active {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+}
+
+.date-item .month-name {
+    font-size: 0.75em;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.date-item .day-name {
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
+.date-item .day-number {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.date-arrow {
+    background-color: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.date-arrow:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.time-slots-group {
+    margin-bottom: 1.5rem;
+}
+
+.time-slots-group h5 {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid rgba(8, 126, 139, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.time-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 0.5rem;
+}
+
+.time-slot-btn {
+    background: transparent;
+    border: 1px solid rgba(8, 126, 139, 0.3);
+    color: var(--accent-color);
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.time-slot-btn:hover {
+    background: rgba(8, 126, 139, 0.1);
+    border-color: var(--accent-color);
+}
+
+.time-slot-btn.selected {
+    background: var(--accent-color);
+    color: #fff;
+    border-color: var(--accent-color);
+}
+
+#bookingForm button[type="submit"]:disabled {
+    cursor: not-allowed;
+}
+
+.offcanvas-booking {
+    width: 450px !important;
+}
+
+.offcanvas-header {
+    background-color: var(--peach-1);
+    border-bottom: 1px solid rgba(86, 193, 182, 0.2);
+}
+
+.offcanvas-body {
+    background-color: #fffaf5; /* Тот же теплый кремовый, что и у карточек */
+}
+
+/* Переопределение стилей кнопки отправки формы */
+#bookingForm .btn {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+#bookingForm .btn:hover {
+    background-color: #076a75; /* Более темный оттенок тилового */
+    border-color: #076a75;
+}
+
+#bookingForm .btn:disabled {
+    background-color: #ccc;
+    border-color: #ccc;
+} 

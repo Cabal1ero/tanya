@@ -1,0 +1,33 @@
+<section id="appointment" class="section">
+  <div class="container">
+    <h2 class="section-title">Запись к мастерам</h2>
+    <div class="masters-schedule">
+      {% for master, days in schedule.items %}
+      {% if days %}
+      <div class="master-card">
+        <div class="master-info">
+          <h3 class="master-name">{{ master.name }}</h3>
+          <p class="master-position">{{ master.position }}</p>
+        </div>
+        <div class="time-slots">
+          {% for date, slots in days.items %}
+          {% if slots %}
+          <div class="slots-group" data-date="{{ date|date:'Y-m-d' }}">
+            <h6>{{ date }}</h6>
+            {% for slot in slots %}
+            <div class="slot">
+              <span class="time">{{ slot.start_time|time:"H:i" }} </span>
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      {% empty %}
+      <p>В настоящее время нет доступных слотов для записи.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>

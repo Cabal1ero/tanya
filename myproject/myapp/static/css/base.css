@@ -1,0 +1,91 @@
+:root {
+    --primary-color: #ffffff;
+    --secondary-color: #f7f7f7;
+    
+    /* Новая гармоничная палитра */
+    --accent-color: #087E8B;     /* Насыщенный тиловый (teal) для всех кнопок */
+    --text-color: #5c4033;       /* Мягкий тёмно-шоколадный для основного текста */
+    --light-text-color: #8a6a57; /* Светлый коричневый для второстепенного текста */
+    --success-color: #087E8B;    /* Этот цвет теперь совпадает с акцентным */
+    
+    /* Единая персиковая палитра для нежного градиента */
+    --peach-1: #fff5eb; /* Самый светлый */
+    --peach-2: #ffe4c4;
+    --peach-3: #ffdab9; /* Основной */
+    --peach-4: #ffcba4;
+    --peach-5: #ffb38a; /* Самый насыщенный */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: linear-gradient(180deg, 
+        var(--peach-1) 0%, 
+        var(--peach-2) 15%, 
+        var(--peach-3) 35%, 
+        var(--peach-4) 55%, 
+        var(--peach-3) 75%, 
+        var(--peach-2) 90%,
+        var(--peach-1) 100%
+    );
+    padding-top: 80px;
+}
+
+.section {
+    padding: 80px 0;
+    background-color: transparent; /* Секции прозрачные, чтобы показать градиент body */
+}
+
+/* Убираем все старые правила и классы для фона */
+.section:nth-child(odd),
+.section:nth-child(even),
+.bg-gradient-peach, .bg-gradient-blue, .bg-gradient-gray,
+.bg-light, .bg-peach, .bg-powder-blue {
+    background: none !important;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--text-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+/* Стили для кнопок */
+.btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #076a75; /* Более темный оттенок тилового */
+    border-color: #076a75;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(8, 126, 139, 0.3);
+}
+
+/* Стили для кнопок УСПЕХА */
+.btn-success {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+    color: #fff;
+}
+
+.btn-success:hover, .btn-success:focus {
+    background-color: #076a75; /* Более темный оттенок тилового */
+    border-color: #076a75;
+    color: #fff;
+}
+
+.text-muted {
+    color: var(--light-text-color) !important;
+}

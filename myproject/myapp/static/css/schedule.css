@@ -1,0 +1,34 @@
+.masters-schedule {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.master-card {
+    background-color: var(--primary-color);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.master-name {
+    color: var(--accent-color);
+}
+
+.master-position {
+    color: var(--light-text-color);
+}
+
+.time-slots {
+    background-color: var(--secondary-color);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.slot {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 5px 10px;
+    margin: 5px 0;
+    border-radius: 3px;
+}

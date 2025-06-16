@@ -1,0 +1,25 @@
+{% load static %}
+<section id="services" class="section">
+    <div class="container">
+        <h2 class="section-title">Наши услуги</h2>
+        <div class="row">
+            {% for service in services %}
+            <div class="col-lg-3 col-md-6 mb-4 d-flex">
+                <a href="{% url 'service_detail' service.id %}" class="service-card-link w-100">
+                    <div class="card service-card-new h-100">
+                        {% if service.get_first_image %}
+                            <img src="{{ service.get_first_image.image.url }}" class="card-img" alt="{{ service.name }}">
+                        {% else %}
+                            <img src="{% static 'img/default.svg' %}" class="card-img" alt="Default Image">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title-new">{{ service.name }}</h5>
+                            <div class="service-card-button-container"></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
