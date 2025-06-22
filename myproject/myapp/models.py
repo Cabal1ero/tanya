@@ -49,8 +49,9 @@ class Appointment(models.Model):
     created_at = models.DateTimeField('Дата создания записи', auto_now_add=True)
 
     def __str__(self):
-        return f'Запись для {self.client_name} на {self.time_slot.date} в {self.time_slot.start_time}'
-
+        date = getattr(self.time_slot, 'date', 'не задана')
+        start_time = getattr(self.time_slot, 'start_time', 'не задано')
+        return f'Запись для {self.client_name} на {date} в {start_time}'
     class Meta:
         verbose_name = 'Запись'
         verbose_name_plural = 'Записи'

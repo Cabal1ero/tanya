@@ -19,6 +19,7 @@ admin.site.register(TeamMember)
 admin.site.register(Review)
 admin.site.register(TimeSlot)
 admin.site.register(PortfolioWork)
+admin.site.register(Appointment)
 
 @admin.register(HeroSlide)
 class HeroSlideAdmin(admin.ModelAdmin):
