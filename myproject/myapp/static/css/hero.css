@@ -5,14 +5,12 @@
 
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
-    bottom: 3rem;
-    z-index: 10;
-    left: 10%;
-    right: 50%;
-    text-align: left;
-    background-color: rgba(66, 99, 111, 0.5);
-    padding: 2rem;
-    border-radius: 0.5rem;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
 }
 
 /* Declare heights since images can be removed */

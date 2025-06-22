@@ -9,7 +9,9 @@
 
         <div class="carousel-inner">
             {% for slide in hero_slides %}
-            <div class="carousel-item {% if forloop.first %}active{% endif %}" style="background-image: url('{{ slide.image.url }}');">
+
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <img src="{{ slide.image.url }}" class="d-block w-100 hero-image" alt="{{ slide.title }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
                 <div class="carousel-caption d-none d-md-block">
                     <h2>{{ slide.title }}</h2>
                     <p>{{ slide.subtitle }}</p>
