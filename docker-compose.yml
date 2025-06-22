@@ -1,10 +1,29 @@
 services:
+  web:
+    build:
+      context: ./myproject
+      dockerfile: Dockerfile
+    command: gunicorn myproject.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - ./myproject:/app
+      - ./myproject/db.sqlite3:/app/db.sqlite3
+      - ./myproject/media:/app/media
+    expose:
+      - 8000
+    networks:
+      - tanyan-net
+
   nginx:
     build:
       context: .
       dockerfile: nginx.Dockerfile
     ports:
       - "80:80"
+    volumes:
+      - ./myproject/staticfiles:/app/staticfiles
+      - ./myproject/media:/app/media
+    depends_on:
+      - web
     networks:
       - tanyan-net
 
