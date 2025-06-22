@@ -23,12 +23,10 @@
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    /* Критически важно для качества */
     background-attachment: scroll;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: optimize-contrast;
     image-rendering: crisp-edges;
-    /* Отключаем сглаживание которое может размывать */
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     transform: translate3d(0, 0, 0);
@@ -45,24 +43,6 @@
     bottom: 0;
     background: rgba(0, 0, 0, 0.2);
     z-index: 1;
-}
-
-/* Caption styling */
-.carousel-caption {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-    width: 90%;
-    max-width: 700px;
-    z-index: 2;
-    /* Улучшение рендеринга текста */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 .carousel-caption h2 {
@@ -126,9 +106,7 @@
         bottom: 15px;
         left: 15px;
         right: 15px;
-        transform: none;
-        width: auto;
-        max-width: none;
+        text-align: center;
         padding: 20px;
     }
     
@@ -164,21 +142,4 @@
     .carousel-caption p {
         font-size: 0.9rem;
     }
-}
-
-.carousel-caption h2 {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #fff;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-}
-
-.carousel-caption p {
-    font-size: 1.2rem;
-    color: #fff;
-    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
-}
-
-.carousel-caption .btn {
-    font-size: 1.1rem;
 }
