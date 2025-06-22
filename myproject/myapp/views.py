@@ -125,8 +125,45 @@ def get_time_slots(request, master_id, date):
             
     return JsonResponse(slots_by_period)
 
+from django.db import transaction
+
 @require_POST
 def book_appointment(request):
+    try:
+        data = json.loads(request.body)
+        timeslot_id = data.get('timeslot_id')
+        client_name = data.get('client_name')
+        client_phone = data.get('client_phone')
+                
+        if not all([timeslot_id, client_name, client_phone]):
+            return JsonResponse({'status': 'error', 'message': 'Пожалуйста, заполните все поля.'}, status=400)
+        
+        # Используем транзакцию с блокировкой для избежания race condition
+        with transaction.atomic():
+            slot = TimeSlot.objects.select_for_update().get(pk=timeslot_id)
+            
+            if not slot.is_available:
+                return JsonResponse({'status': 'error', 'message': 'Данное время уже занято.'}, status=400)
+            
+            # Создаем запись
+            Appointment.objects.create(
+                client_name=client_name,
+                client_phone=client_phone,
+                time_slot=slot
+            )
+                    
+            # Помечаем слот как занятый
+            slot.is_available = False
+            slot.save()
+            
+        return JsonResponse({'status': 'success', 'message': 'Вы успешно записаны!'})
+        
+    except TimeSlot.DoesNotExist:
+        return JsonResponse({'status': 'error', 'message': 'Выбранное время не найдено.'}, status=404)
+    except json.JSONDecodeError:
+        return JsonResponse({'status': 'error', 'message': 'Неверный формат данных.'}, status=400)
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
     try:
         data = json.loads(request.body)
         timeslot_id = data.get('timeslot_id')
