@@ -19,9 +19,6 @@ services:
       dockerfile: nginx.Dockerfile
     ports:
       - "80:80"
-    volumes:
-      - ./myproject/staticfiles:/app/staticfiles
-      - ./myproject/media:/app/media
     depends_on:
       - web
     networks:
@@ -29,4 +26,4 @@ services:
 
 networks:
   tanyan-net:
-    driver: bridge 
+    driver: bridge

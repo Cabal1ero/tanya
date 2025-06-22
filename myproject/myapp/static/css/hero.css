@@ -1,3 +1,9 @@
+/* Carousel base class */
+#heroCarousel {
+    margin-bottom: 4rem;
+}
+
+/* Since positioning the image, we need to help out the caption */
 .carousel-caption {
     bottom: 3rem;
     z-index: 10;
@@ -12,51 +18,149 @@
 /* Declare heights since images can be removed */
 .carousel-item {
     height: 32rem;
+    position: relative;
     background-color: #777;
-    background-position: center;
+    background-position: center center;
     background-size: cover;
+    background-repeat: no-repeat;
+    /* Критически важно для качества */
+    background-attachment: scroll;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+    image-rendering: crisp-edges;
+    /* Отключаем сглаживание которое может размывать */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
-.carousel-item > img {
+/* Overlay для лучшего контраста текста */
+.carousel-item::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
-    min-width: 100%;
-    height: 32rem;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
+/* Caption styling */
+.carousel-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 90%;
+    max-width: 700px;
+    z-index: 2;
+    /* Улучшение рендеринга текста */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.carousel-caption h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.carousel-caption p {
+    font-size: 1.3rem;
+    color: #fff;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+.carousel-caption .btn {
+    font-size: 1.1rem;
+    text-shadow: none;
+}
+
+/* Button styling */
 .btn-primary {
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
-    color: var(--text-color-light, #fff);
-    padding: 12px 24px;
-    font-size: 1rem;
+    background-color: var(--accent-color, #007bff);
+    border-color: var(--accent-color, #007bff);
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1.1rem;
     font-weight: 600;
     transition: all 0.3s ease;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .btn-primary:hover {
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
+    background-color: var(--accent-color, #0056b3);
+    border-color: var(--accent-color, #0056b3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
 }
 
-/* RESPONSIVE CSS
--------------------------------------------------- */
+/* Убираем размытие при переходах */
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+    display: block;
+    transition: transform 0.6s ease-in-out;
+}
 
+/* RESPONSIVE CSS */
 @media (max-width: 768px) {
+    .carousel-item {
+        height: 25rem;
+    }
+    
+    .carousel-caption {
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+        transform: none;
+        width: auto;
+        max-width: none;
+        padding: 20px;
+    }
+    
+    .carousel-caption h2 {
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .carousel-caption p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .carousel-caption .btn {
+        font-size: 1rem;
+        padding: 12px 24px;
+    }
+}
+
+@media (max-width: 576px) {
     .carousel-item {
         height: 20rem;
     }
+    
     .carousel-caption {
-        bottom: 1.5rem;
-        left: 5%;
-        right: 5%;
-        text-align: center;
-        background-color: rgba(66, 99, 111, 0.7);
+        padding: 15px;
     }
+    
     .carousel-caption h2 {
         font-size: 1.5rem;
     }
+    
     .carousel-caption p {
         font-size: 0.9rem;
     }
@@ -77,4 +181,4 @@
 
 .carousel-caption .btn {
     font-size: 1.1rem;
-    }
+}

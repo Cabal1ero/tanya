@@ -11,7 +11,7 @@
             <h4>Цена: {{ service.price }} руб.</h4>
             
             
-            <a href="{% url 'home' %}#appointment" class="btn btn-primary mt-3">Записаться на эту услугу</a>
+            <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBooking" aria-controls="offcanvasBooking">Записаться на услугу</button>
         </div>
         <div class="col-md-4">
             <div id="serviceDetailCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -40,4 +40,25 @@
         </div>
     </div>
 </div>
-{% endblock %} 
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Автоматически выбираем текущую услугу в форме записи при открытии offcanvas
+    const offcanvasBooking = document.getElementById('offcanvasBooking');
+    const serviceInput = document.getElementById('serviceInput');
+    
+    offcanvasBooking.addEventListener('show.bs.offcanvas', function () {
+        // Если есть serviceInput и текущая услуга, выбираем её
+        if (serviceInput) {
+            // Предполагаем, что ID услуги передается через контекст
+            const currentServiceId = '{{ service.id }}';
+            if (currentServiceId) {
+                serviceInput.value = currentServiceId;
+                // Триггерим событие change для загрузки мастеров
+                serviceInput.dispatchEvent(new Event('change'));
+            }
+        }
+    });
+});
+</script>
+{% endblock %}
