@@ -15,6 +15,16 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+    /* Улучшение качества изображений */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: high-quality;
+    -ms-interpolation-mode: bicubic;
+    /* Отключаем размытие при трансформациях */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 /* Caption styling */
@@ -29,6 +39,9 @@
     text-align: center;
     width: 90%;
     max-width: 600px;
+    /* Улучшение рендеринга текста */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .carousel-caption h2 {
@@ -111,4 +124,27 @@
     .carousel-caption p {
         font-size: 0.8rem;
     }
+}
+
+/* Дополнительные стили для четкости */
+#heroCarousel * {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+/* Убираем размытие при анимации карусели */
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+    display: block;
+}
+
+.carousel-item-next:not(.carousel-item-start),
+.active.carousel-item-end {
+    transform: translateX(100%);
+}
+
+.carousel-item-prev:not(.carousel-item-end),
+.active.carousel-item-start {
+    transform: translateX(-100%);
 }

@@ -1,6 +1,6 @@
 {% if hero_slides %}
 <section id="hero">
-    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
         <div class="carousel-indicators">
             {% for slide in hero_slides %}
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
@@ -10,7 +10,11 @@
         <div class="carousel-inner">
             {% for slide in hero_slides %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                <img src="{{ slide.image.url }}" class="d-block w-100" alt="{{ slide.title }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
+                <img src="{{ slide.image.url }}" 
+                     class="d-block w-100" 
+                     alt="{{ slide.title }}" 
+                     loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                     decoding="{% if forloop.first %}sync{% else %}async{% endif %}">
                 <div class="carousel-caption">
                     <h2>{{ slide.title }}</h2>
                     <p>{{ slide.subtitle }}</p>
