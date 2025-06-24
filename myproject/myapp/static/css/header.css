@@ -3,7 +3,7 @@
     backdrop-filter: blur(10px); /* Эффект размытия для современных браузеров */
     -webkit-backdrop-filter: blur(10px);
     padding: 15px 0; /* Немного уменьшим паддинг */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Тень мягче */
+    box-shadow: 0 4px 10px rgba(8, 126, 139, 0.3); /* Тень мягче */
     position: fixed; /* Фиксируем шапку */
     top: 0;
     left: 0;
@@ -34,13 +34,6 @@
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(8, 126, 139)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
 }
 
-.elegant-brand {
-    color: var(--accent-color);
-    font-weight: bold;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
-}
-
 .btn-booking {
     background-color: var(--accent-color) !important; /* Усиление стиля */
     border-color: var(--accent-color) !important; /* Усиление стиля */
@@ -55,4 +48,40 @@
     border-color: #076a75 !important; /* Усиление стиля */
     color: #fff !important;
     box-shadow: 0 4px 10px rgba(8, 126, 139, 0.3);
+}
+
+/*
+ * Logo Styles
+ * We make the logo a circle to hide the square black background of the image.
+ */
+.navbar-brand {
+  padding: 0;
+}
+
+.brand-logo {
+  height: 20px;
+  width: auto;
+}
+
+.navbar-brand:hover .brand-logo {
+  opacity: 0.8;
+}
+
+.elegant-brand {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #087E8B !important; /* Цвет как у кнопки "Онлайн-запись" */
+    padding: 0;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.elegant-brand:hover {
+    color: #076a75 !important; /* Цвет как у кнопки при наведении */
+}
+
+/* Удаляем старые правила для .header img и .header .d-flex.align-items-center img */
+.header img, .header .d-flex.align-items-center img {
+  all: unset;
 }
